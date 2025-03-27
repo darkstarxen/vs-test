@@ -162,7 +162,7 @@ jobs:
 
       - name: "Build Android using gradlew."
         working-directory: build/android_gradle
-        run: NDK_CCACHE=1 NDK_CCACHE_BIN=ccache ./gradlew app:assemble${{ matrix.build_type }} --info
+        run: NDK_CCACHE=1 NDK_CCACHE_BIN=ccache ./gradlew assemble${{ matrix.build_type }}
 
   build_ios:
     # iOS is 10x expensive to run on GitHub machines, so only run if we know something else fast/simple passed as well
