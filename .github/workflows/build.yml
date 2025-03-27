@@ -31,4 +31,4 @@ jobs:
 
       - name: "Build Android using gradlew."
         working-directory: build/android_gradle
-        run: ./gradlew assemble${{ matrix.build_type }}
+        run: ./gradlew assembleDebug
