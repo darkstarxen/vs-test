@@ -1,8 +1,6 @@
 name: Build Project
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
   push:
     branches: [main]
 
@@ -29,14 +27,14 @@ jobs:
           java-version: "21"
           distribution: "zulu"
           cache: gradle
-      - name: ccache
-        uses: hendrikmuhs/ccache-action@v1.2.9
-        with:
-          key: ${{ github.job }}-${{ matrix.os }}
 
       - name: "Run generate script"
         run: ./scripts/generate.py android
 
+      - name: "gradlew"
+        working-directory: build/android_gradle
+        run: chmod +x gradlew
+
       - name: "Build Android using gradlew."
         working-directory: build/android_gradle
-        run: NDK_CCACHE=1 NDK_CCACHE_BIN=ccache ./gradlew assemble${{ matrix.build_type }}
+        run: ./gradlew assemble${{ matrix.build_type }}
