@@ -6,8 +6,8 @@ on:
 
 jobs:
   build:
-    name: "Build Android in ${{ matrix.build_type }}"
     runs-on: ubuntu-latest
+    
     strategy:
       matrix:
         build_type: [Debug]
