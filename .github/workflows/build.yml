@@ -2,11 +2,7 @@ name: Build Project
 
 on:
   push:
-    branches: [main]
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
-  cancel-in-progress: true
+    branches: [ "main" ]
 
 jobs:
   build:
